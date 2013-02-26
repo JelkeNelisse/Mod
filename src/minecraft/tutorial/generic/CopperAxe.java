@@ -1,7 +1,5 @@
 package tutorial.generic;
 
-
-
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.block.Block;
@@ -13,21 +11,14 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.item.ItemSpade;
 import net.minecraftforge.oredict.OreDictionary;
 
+public class CopperAxe extends ItemAxe
+{
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
 
-
-
-public class CopperAxe extends ItemAxe{
-	
-	
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-	      return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
-	   }
-
-
-	
-	
-	
-	public CopperAxe(int par1, EnumToolMaterial par2EnumToolMaterial)
+    public CopperAxe(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1, par2EnumToolMaterial);
     }

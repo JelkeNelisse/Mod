@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -11,11 +11,11 @@ import net.minecraft.item.ItemStack;
 /**
  * Provides an interface to the recipe manager of the Sawmill. Accessible via {@link CraftingManagers.sawmillManager}
  */
-public interface ISawmillManager {
-
+public interface ISawmillManager
+{
     /**
      * Add a recipe to the Sawmill
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input
@@ -33,7 +33,7 @@ public interface ISawmillManager {
 
     /**
      * Add a recipe to the Sawmill
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input
@@ -53,7 +53,7 @@ public interface ISawmillManager {
 
     /**
      * Add a recipe to the Sawmill
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input

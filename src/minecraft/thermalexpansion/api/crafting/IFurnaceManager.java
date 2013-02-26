@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -11,11 +11,11 @@ import net.minecraft.item.ItemStack;
 /**
  * Provides an interface to the recipe manager of the Powered Furnace. Accessible via {@link CraftingManagers.FurnaceManager}
  */
-public interface IFurnaceManager {
-
+public interface IFurnaceManager
+{
     /**
      * Add a recipe to the Powered Furnace.
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input

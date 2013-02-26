@@ -8,11 +8,11 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class CopperShovel extends ItemSpade
 {
-	
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-	      return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
-	   }
-	
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
+
     public CopperShovel(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1, par2EnumToolMaterial);

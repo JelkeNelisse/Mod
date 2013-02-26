@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -8,8 +8,8 @@ package thermalexpansion.api.crafting;
 
 import net.minecraft.item.ItemStack;
 
-public interface ISmelterRecipe {
-
+public interface ISmelterRecipe
+{
     public ItemStack getPrimaryInput();
 
     public ItemStack getSecondaryInput();

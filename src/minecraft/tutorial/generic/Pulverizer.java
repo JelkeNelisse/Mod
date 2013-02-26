@@ -1,26 +1,21 @@
-
 package tutorial.generic;
 
 import net.minecraft.item.ItemStack;
 import thermalexpansion.api.crafting.IPulverizerManager;
 import net.minecraft.item.Item;
 
+public interface Pulverizer extends IPulverizerManager
+{
+    ItemStack CopperOre = new ItemStack(Generic.genericOre);
+    ItemStack CopperBar = new ItemStack(Generic.genericItem);
+    ItemStack Creep = new ItemStack(Generic.CreepOre);
 
-
-public interface Pulverizer extends IPulverizerManager {
-	
-	ItemStack CopperOre = new ItemStack(Generic.genericOre);
-	ItemStack CopperBar = new ItemStack(Generic.genericItem);
-	ItemStack Creep = new ItemStack(Generic.CreepOre);
-
-	public boolean addRecipe(int energy , ItemStack CopperOre, ItemStack CopperBar, boolean overwrite);
+    public boolean addRecipe(int energy , ItemStack CopperOre, ItemStack CopperBar, boolean overwrite);
 }
-
-
 
 /**
  * Add a recipe to the Pulverizer
- * 
+ *
  * @param energy
  *            Energy needed to process the item.
  * @param input

@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -12,11 +12,11 @@ import net.minecraftforge.liquids.LiquidStack;
 /**
  * Provides an interface to the recipe manager of the Crucible. Accessible via {@link CraftingManagers.crucibleManager}
  */
-public interface ICrucibleManager {
-
+public interface ICrucibleManager
+{
     /**
      * Add a recipe to the Crucible.
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input

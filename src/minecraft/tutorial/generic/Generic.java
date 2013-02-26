@@ -66,10 +66,10 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Generic
 {
-	public final static Block CopperBlock = new CopperBlock(981, 1, Material.iron);
-	public final static Block CreepOre = new CreepOre(980, 2, Material.iron);
-	public final static Block genericOre = new GenericOre(900, 1, Material.iron);
-    public final static Item genericItem = new GenericItem(5000).setItemName("Copper Ingot");
+    public final static Block CopperBlock = new CopperBlock(981, 1, Material.iron);
+    public final static Block CreepOre = new CreepOre(980, 2, Material.iron);
+    public final static Block genericOre = new GenericOre(900, 1, Material.iron);
+    public final static Item genericItem = new GenericItem(990).setItemName("Copper Ingot");
     public static Item CopperPickaxe;
     public static Item CopperAxe;
     public static Item CopperShovel;
@@ -81,7 +81,20 @@ public class Generic
     public static Item CopperPlate;
     public static Item CopperLegs;
     public static Item CopperBoots;
-    
+    public static int CopperIngotID;
+    public static int CopperPickaxeID;
+    public static int CopperAxeID;
+    public static int CopperShovelID;
+    public static int CopperSwordID;
+    public static int CopperHoeID;
+    public static int CopperPaxelID;
+    public static int GlassShovelID;
+    public static int CopperHelmetID;
+    public static int CopperPlateID;
+    public static int CopperLegsID;
+    public static int CopperBootsID;
+    public static int CopperOreID;
+    public static int CopperBlockID;
 
     // sets the items
 
@@ -95,6 +108,23 @@ public class Generic
     @PreInit
     public void preInit(FMLPreInitializationEvent event)
     {
+        Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+        config.load();
+        CopperIngotID = config.getItem("Copper Ingot", 990).getInt();
+        CopperPickaxeID = config.getItem("Copper Pickaxe", 550).getInt();
+        CopperAxeID = config.getItem("Copper Axe", 551).getInt();
+        CopperShovelID = config.getItem("Copper Shovel", 552).getInt();
+        CopperSwordID = config.getItem("Copper Sword", 554).getInt();
+        CopperHoeID = config.getItem("Copper Hoe", 553).getInt();
+        CopperPaxelID = config.getItem("Copper Paxel", 555).getInt();
+        GlassShovelID = config.getItem("Glass Shovel", 556).getInt();
+        CopperHelmetID = config.getItem("Copper Helmet", 4000).getInt();
+        CopperPlateID = config.getItem("Copper Plate", 4001).getInt();
+        CopperLegsID = config.getItem("Copper Legs", 4002).getInt();
+        CopperBootsID = config.getItem("Copper Boots", 4003).getInt();
+        CopperBlockID = config.getBlock("Copper Block", 981).getInt();
+        CopperOreID = config.getBlock("Copper Ore", 900).getInt();
+        config.save();
     }
 
     @Init
@@ -103,42 +133,34 @@ public class Generic
         OreDictionary.registerOre("ingotCopper", new ItemStack(genericItem));
         OreDictionary.registerOre("oreCopper", new ItemStack(genericOre));
         // OreDictionary stuff
-       
-        
         LanguageRegistry.addName(genericOre, "Copper Ore");
         LanguageRegistry.addName(CreepOre, "Creep Ore");
         LanguageRegistry.addName(CopperBlock, "Copper Block");
         MinecraftForge.setBlockHarvestLevel(CopperBlock, "pickaxe", 1);
         MinecraftForge.setBlockHarvestLevel(genericOre, "pickaxe", 1);
-        MinecraftForge.setBlockHarvestLevel(CreepOre, "pickaxe", 1);        
+        MinecraftForge.setBlockHarvestLevel(CreepOre, "pickaxe", 1);
         GameRegistry.registerBlock(CopperBlock, "Copper Block");
         GameRegistry.registerBlock(genericOre, "generic Ore");
         GameRegistry.registerBlock(CreepOre, "Creep Ore");
         LanguageRegistry.addName(genericItem, "Copper Ingot");
         proxy.registerRenderers();
         GameRegistry.addSmelting(Generic.genericOre.blockID, new ItemStack(Generic.genericItem), 2f);
-       
-        if(!Loader.isModLoaded("ThermalExpansion")){
-        	
-       
-        	GameRegistry.registerWorldGenerator(new WorldGeneratorTutorial());
-        	
-        	EnumArmorMaterial TutArmorMaterial = EnumHelper.addArmorMaterial("TutMaterial", 24, new int[] {1, 4, 4, 1}, 10);
-    		
-        	CopperHelmet = new CopperArmor(4000, TutArmorMaterial, proxy.addArmor("Tutorial"), 0).setItemName("Copper Helmet").setIconIndex(0);
-    		CopperPlate = new CopperArmor(4001, TutArmorMaterial, proxy.addArmor("Tutorial"), 1).setItemName("Copper Plate").setIconIndex(1);
-    		CopperLegs = new CopperArmor(4002, TutArmorMaterial, proxy.addArmor("Tutorial"), 2).setItemName("Copper Legs").setIconIndex(2);
-    		CopperBoots = new CopperArmor(4003, TutArmorMaterial, proxy.addArmor("Tutorial"), 3).setItemName("Copper Boots").setIconIndex(3); 
-           
-    		LanguageRegistry.addName(CopperHelmet, "Copper Helmet");
+
+        if (!Loader.isModLoaded("ThermalExpansion"))
+        {
+            GameRegistry.registerWorldGenerator(new WorldGeneratorTutorial());
+            EnumArmorMaterial TutArmorMaterial = EnumHelper.addArmorMaterial("TutMaterial", 24, new int[] {1, 4, 4, 1}, 10);
+            CopperHelmet = new CopperArmor(4000, TutArmorMaterial, proxy.addArmor("Tutorial"), 0).setItemName("Copper Helmet").setIconIndex(0);
+            CopperPlate = new CopperArmor(4001, TutArmorMaterial, proxy.addArmor("Tutorial"), 1).setItemName("Copper Plate").setIconIndex(1);
+            CopperLegs = new CopperArmor(4002, TutArmorMaterial, proxy.addArmor("Tutorial"), 2).setItemName("Copper Legs").setIconIndex(2);
+            CopperBoots = new CopperArmor(4003, TutArmorMaterial, proxy.addArmor("Tutorial"), 3).setItemName("Copper Boots").setIconIndex(3);
+            LanguageRegistry.addName(CopperHelmet, "Copper Helmet");
             LanguageRegistry.addName(CopperPlate, "Copper Plate");
             LanguageRegistry.addName(CopperLegs, "Copper Legs");
             LanguageRegistry.addName(CopperBoots, "Copper Boots");
-            
-                
             CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperHelmet, true, new Object[]
                     {
-                        "FFF", "F F" , "   " , 'F', "ingotCopper" 
+                        "FFF", "F F" , "   " , 'F', "ingotCopper"
                     }));
             CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperPlate, true, new Object[]
                     {
@@ -152,35 +174,21 @@ public class Generic
                     {
                         "F F", "F F" , "   " , 'F', "ingotCopper"
                     }));
-            
         }
-        
+
         /*
         if (Loader.isModLoaded("ThermalExpansion")) {
-        	
-
         	try {
-        	
-        		
         		}
         	catch (Exception e) {
-        	
-        		System.out.println("<your mod name>: Thermal Expansion integration was unsuccessful - please contact the author of this mod to let them know hat the API may have changed."); 
+        		System.out.println("<your mod name>: Thermal Expansion integration was unsuccessful - please contact the author of this mod to let them know hat the API may have changed.");
         	}
-        } 
-	*/
-
-
-        
+        }
+        */
         // worldgen
-        
-        
         EnumToolMaterial tutMaterial = EnumHelper.addToolMaterial("TutMaterial", 2, 200, 5.0F, 2, 22);
         EnumToolMaterial Glass = EnumHelper.addToolMaterial("Glass", 0, 1, 1.5F, 0, 10);
         // Makes the new material
-        
-        
- 
         CopperPickaxe = new CopperPickaxe(550, tutMaterial).setIconIndex(3).setItemName("Copper Pickaxe");
         CopperAxe = new CopperAxe(551, tutMaterial).setIconIndex(3).setItemName("Copper Axe");
         CopperShovel = new CopperShovel(552, tutMaterial).setIconIndex(3).setItemName("Copper Shovel");
@@ -196,7 +204,6 @@ public class Generic
         LanguageRegistry.addName(CopperPaxel, "Copper Paxel");
         LanguageRegistry.addName(GlassShovel, "Glass Shovel");
         // Registry of the new tools
-        
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperBlock, true, new Object[]
                 {
                     "FFF", "FFF" , "FFF" , 'F', "ingotCopper"
@@ -229,18 +236,13 @@ public class Generic
                 {
                     " F ", " F " , " X " , 'F', "ingotCopper", 'X', Item.stick
                 }));
-       
-        ItemStack GlassShovel = new ItemStack(Generic.GlassShovel); 
-        GlassShovel.addEnchantment(Enchantment.silkTouch, 2); 
+        ItemStack GlassShovel = new ItemStack(Generic.GlassShovel);
+        GlassShovel.addEnchantment(Enchantment.silkTouch, 2);
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(GlassShovel, true, new Object[]
-        		{
-        		  " F ", " X " , " X " , 'F',  Block.glass , 'X', Item.stick
-            	}));
-
-
+                {
+                    " F ", " X " , " X " , 'F',  Block.glass , 'X', Item.stick
+                }));
         //Crafting recipes
-       
-        
         ItemStack CopperPaxel = new ItemStack(Generic.CopperPaxel);
         ItemStack CopperPickaxeStack = new ItemStack(Generic.CopperPickaxe);
         ItemStack CopperAxe = new ItemStack(Generic.CopperAxe);
@@ -249,16 +251,12 @@ public class Generic
                 CopperPickaxeStack, CopperShovel, CopperAxe);
         GameRegistry.addShapelessRecipe(new ItemStack(Generic.genericItem, 9),
                 CopperBlock);
-    
-   DungeonHooks.addDungeonLoot(CopperPaxel, 100, 1, 1);
-    
-    
+        DungeonHooks.addDungeonLoot(CopperPaxel, 100, 1, 1);
     }
 
     @PostInit
     public void postInit(FMLPostInitializationEvent event)
     {
-    	
         // Stub Method
     }
 }

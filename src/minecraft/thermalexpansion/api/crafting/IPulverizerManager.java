@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -11,11 +11,11 @@ import net.minecraft.item.ItemStack;
 /**
  * Provides an interface to the recipe manager of the Pulverizer. Accessible via {@link CraftingManagers.pulverizerManager}
  */
-public interface IPulverizerManager {
-
+public interface IPulverizerManager
+{
     /**
      * Add a recipe to the Pulverizer
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input
@@ -33,7 +33,7 @@ public interface IPulverizerManager {
 
     /**
      * Add a recipe to the Pulverizer
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input
@@ -53,7 +53,7 @@ public interface IPulverizerManager {
 
     /**
      * Add a recipe to the Pulverizer
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input
@@ -64,7 +64,7 @@ public interface IPulverizerManager {
      *            ItemStack representing the secondary output product.
      * @param secondaryChance
      *            Integer representing % chance (out of 100) of the secondary product being created.
-     * 
+     *
      @param overwrite
      *            Flag to enable recipe overwriting. This will only be allowed if enabled in the Thermal Expansion Configuration file and will be logged for
      *            information purposes.

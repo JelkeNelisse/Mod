@@ -11,12 +11,11 @@ public class CopperPickaxe extends ItemPickaxe
     {
         super(par1, par2EnumToolMaterial);
     }
-    
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-	      return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
-	   }
 
-	
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
 
     @Override
     public String getTextureFile()

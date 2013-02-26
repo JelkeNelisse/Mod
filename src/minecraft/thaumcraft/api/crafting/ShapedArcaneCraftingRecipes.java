@@ -16,9 +16,9 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
 
     /** How many vertical slots this recipe uses. */
     public int recipeHeight;
-    
+
     public String key;
-    
+
     public int cost;
 
     /** Is a array of ItemStack that composes the recipe. */
@@ -51,9 +51,11 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
      */
     public boolean matches(IInventory par1InventoryCrafting, EntityPlayer player)
     {
-    	if (key.length()>0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key)) {
-    		return false;
-    	}
+        if (key.length() > 0 && !ThaumcraftApiHelper.isResearchComplete(player.username, key))
+        {
+            return false;
+        }
+
         for (int var2 = 0; var2 <= 3 - this.recipeWidth; ++var2)
         {
             for (int var3 = 0; var3 <= 3 - this.recipeHeight; ++var3)
@@ -73,9 +75,6 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
         return false;
     }
 
-    
-    
-    
     /**
      * Checks if the region of a crafting inventory is match for the recipe.
      */
@@ -119,20 +118,23 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
                     {
                         return false;
                     }
-                    
-                	if (var9.hasTagCompound()) {
-                		NBTTagCompound tc = var9.getTagCompound();
-                		for (Object tag:tc.getTags().toArray()) {
-                			NBTBase base = (NBTBase)tag;
-                			Class nc = NBTBase.newTag(base.getId(), base.getName()).getClass();
-                    		if (!(var10.hasTagCompound() && 
-                    				nc.cast(var10.getTagCompound().getTag(base.getName())).equals(nc.cast(base)))) {
-                    			return false;
-                    		}
-                		}
-                	}
-                    
-                    
+
+                    if (var9.hasTagCompound())
+                    {
+                        NBTTagCompound tc = var9.getTagCompound();
+
+                        for (Object tag: tc.getTags().toArray())
+                        {
+                            NBTBase base = (NBTBase)tag;
+                            Class nc = NBTBase.newTag(base.getId(), base.getName()).getClass();
+
+                            if (!(var10.hasTagCompound() &&
+                                    nc.cast(var10.getTagCompound().getTag(base.getName())).equals(nc.cast(base))))
+                            {
+                                return false;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -156,13 +158,15 @@ public class ShapedArcaneCraftingRecipes implements IArcaneRecipe
         return this.recipeWidth * this.recipeHeight;
     }
 
-	@Override
-	public int getCost() {
-		return cost;
-	}
-	
-	@Override
-	public String getKey() {
-		return key;
-	}
+    @Override
+    public int getCost()
+    {
+        return cost;
+    }
+
+    @Override
+    public String getKey()
+    {
+        return key;
+    }
 }

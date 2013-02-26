@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -10,8 +10,8 @@ package thermalexpansion.api.crafting;
  * Allows access to all of the Thermal Expansion crafting managers. Add your recipes during @PostInit or risk a null pointer. :)
  */
 
-public class CraftingManagers {
-
+public class CraftingManagers
+{
     /**
      * Allows you to add recipes to the Magma Crucible. See {@link ICrucibleManager} for details.
      */

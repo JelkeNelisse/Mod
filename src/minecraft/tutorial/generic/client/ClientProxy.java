@@ -22,8 +22,9 @@ public class ClientProxy extends CommonProxy
         MinecraftForgeClient.preloadTexture(Gshovel_PNG);
         MinecraftForgeClient.preloadTexture(Creep_PNG);
         MinecraftForgeClient.preloadTexture(copperblock_PNG);
-            }
-    public int addArmor(String Armor){
-    	return RenderingRegistry.addNewArmourRendererPrefix(Armor);
+    }
+    public int addArmor(String Armor)
+    {
+        return RenderingRegistry.addNewArmourRendererPrefix(Armor);
     }
 }

@@ -13,17 +13,17 @@ public class CopperSword extends ItemSword
     {
         super(par1, par2EnumToolMaterial);
     }
-    
-    
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-	      return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
-	   }
-    
-    public boolean hitEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving) 
-    { 
-             par2EntityLiving.setFire(2); 
-    //x is number of seconds set fire for. 
-             return true; 
+
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
+
+    public boolean hitEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving)
+    {
+        par2EntityLiving.setFire(2);
+        //x is number of seconds set fire for.
+        return true;
     }
     @Override
     public String getTextureFile()

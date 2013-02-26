@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -11,11 +11,11 @@ import net.minecraft.item.ItemStack;
 /**
  * Provides an interface to the recipe manager of the Induction Smelter. Accessible via {@link CraftingManagers.smelterManager}
  */
-public interface ISmelterManager {
-
+public interface ISmelterManager
+{
     /**
      * Add a recipe to the Induction Smelter
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param primaryInput
@@ -35,7 +35,7 @@ public interface ISmelterManager {
 
     /**
      * Add a recipe to the Induction Smelter
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param primaryInput
@@ -57,7 +57,7 @@ public interface ISmelterManager {
 
     /**
      * Add a recipe to the Induction Smelter
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param primaryInput

@@ -15,10 +15,11 @@ public class CommonProxy
     public static String Gshovel_PNG = "/tutorial/generic/png/gshovel.png";
     public static String Creep_PNG = "/tutorial/generic/png/creep.png";
     public static String copperblock_PNG = "/tutorial/generic/png/copperblock.png";
-      // Client stuff
-   
-    public int addArmor(String armor){
-    	return 0;
+    // Client stuff
+
+    public int addArmor(String armor)
+    {
+        return 0;
     }
     public void registerRenderers()
     {

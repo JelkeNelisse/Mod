@@ -23,8 +23,8 @@ public class CreepOre extends BlockOre
     {
         return CommonProxy.Creep_PNG;
     }
-    public int idDropped(int par1, Random random, int zero) {
+    public int idDropped(int par1, Random random, int zero)
+    {
         return Item.gunpowder.itemID;
-}
-
+    }
 }

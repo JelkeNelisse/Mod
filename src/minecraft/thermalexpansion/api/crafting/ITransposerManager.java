@@ -1,6 +1,6 @@
 /**
  * Team CoFH
- * 
+ *
  * Thermal Expansion
  */
 
@@ -12,11 +12,11 @@ import net.minecraftforge.liquids.LiquidStack;
 /**
  * Provides an interface to the recipe manager of the Liquid Transposer. Accessible via {@link CraftingManagers.transposerManager}
  */
-public interface ITransposerManager {
-
+public interface ITransposerManager
+{
     /**
      * Add a recipe to the Liquid Transposer
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input
@@ -38,7 +38,7 @@ public interface ITransposerManager {
 
     /**
      * Add a recipe to the Liquid Transposer
-     * 
+     *
      * @param energy
      *            Energy needed to process the item.
      * @param input

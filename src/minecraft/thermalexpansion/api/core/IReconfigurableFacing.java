@@ -1,8 +1,7 @@
-
 package thermalexpansion.api.core;
 
-public interface IReconfigurableFacing {
-
+public interface IReconfigurableFacing
+{
     public int getFacing();
 
     public boolean rotateBlock();

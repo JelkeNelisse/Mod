@@ -1,8 +1,7 @@
-
 package thermalexpansion.api.core;
 
-public interface IRedstoneControl {
-
+public interface IRedstoneControl
+{
     public boolean getRedstoneDisable();
 
     public boolean getRedstoneState();

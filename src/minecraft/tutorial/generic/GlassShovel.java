@@ -10,8 +10,7 @@ public class GlassShovel extends ItemSpade
     {
         super(par1, par2EnumToolMaterial);
     }
-    
-    
+
     @Override
     public String getTextureFile()
     {
