@@ -135,13 +135,7 @@ public class Generic
             LanguageRegistry.addName(CopperLegs, "Copper Legs");
             LanguageRegistry.addName(CopperBoots, "Copper Boots");
             
-            
-            
-            
-            
-            
-            
-            
+                
             CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperHelmet, true, new Object[]
                     {
                         "FFF", "F F" , "   " , 'F', "ingotCopper" 
@@ -158,6 +152,7 @@ public class Generic
                     {
                         "F F", "F F" , "   " , 'F', "ingotCopper"
                     }));
+            
         }
         
         /*

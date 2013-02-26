@@ -5,6 +5,7 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IArmorTextureProvider;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class CopperArmor extends ItemArmor implements IArmorTextureProvider{
 
@@ -25,7 +26,7 @@ public class CopperArmor extends ItemArmor implements IArmorTextureProvider{
 	}
 	
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-	      return Generic.genericItem.itemID == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+	      return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	   }
 
 	

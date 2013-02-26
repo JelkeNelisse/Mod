@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class CopperPaxel extends ItemTool
 {
@@ -20,10 +21,9 @@ public class CopperPaxel extends ItemTool
         super(par1, 2, par2EnumToolMaterial, blocksEffectiveAgainst);
     }
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-	      return Generic.genericItem.itemID == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
+	      return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	   }
-
 	
     /**
      * Returns if the item (tool) can harvest results from the block type.
