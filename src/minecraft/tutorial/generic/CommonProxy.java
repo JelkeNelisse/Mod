@@ -1,5 +1,8 @@
 package tutorial.generic;
 
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
+
 public class CommonProxy
 {
     public static String ITEMS_PNG = "/tutorial/generic/png/items.png";
@@ -15,12 +18,19 @@ public class CommonProxy
     public static String Gshovel_PNG = "/tutorial/generic/png/gshovel.png";
     public static String Creep_PNG = "/tutorial/generic/png/creep.png";
     public static String copperblock_PNG = "/tutorial/generic/png/copperblock.png";
+    public static String battleaxe_PNG = "/tutorial/generic/png/battleaxe.png";
     // Client stuff
 
     public int addArmor(String armor)
     {
         return 0;
     }
+    
+    public void registerServerTickHandler()
+	 {
+	  TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
+	 }
+
     public void registerRenderers()
     {
         // Nothing here as the server doesn't render graphics!

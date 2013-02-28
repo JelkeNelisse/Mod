@@ -81,6 +81,7 @@ public class Generic
     public static Item CopperPlate;
     public static Item CopperLegs;
     public static Item CopperBoots;
+    public static Item CopperBattleAxe;
     public static int CopperIngotID;
     public static int CopperPickaxeID;
     public static int CopperAxeID;
@@ -130,9 +131,13 @@ public class Generic
     @Init
     public void load(FMLInitializationEvent event)
     {
+    	proxy.registerServerTickHandler();
+
+    	
         OreDictionary.registerOre("ingotCopper", new ItemStack(genericItem));
         OreDictionary.registerOre("oreCopper", new ItemStack(genericOre));
         // OreDictionary stuff
+       
         LanguageRegistry.addName(genericOre, "Copper Ore");
         LanguageRegistry.addName(CreepOre, "Creep Ore");
         LanguageRegistry.addName(CopperBlock, "Copper Block");
@@ -186,8 +191,11 @@ public class Generic
         }
         */
         // worldgen
-        EnumToolMaterial tutMaterial = EnumHelper.addToolMaterial("TutMaterial", 2, 200, 5.0F, 2, 22);
+       
+        EnumToolMaterial tutMaterial = EnumHelper.addToolMaterial("TutMaterial", 2, 200, 5.0F,(int) 1.5, 22);
         EnumToolMaterial Glass = EnumHelper.addToolMaterial("Glass", 0, 1, 1.5F, 0, 10);
+        EnumToolMaterial BattleAxe = EnumHelper.addToolMaterial ("BattleAxe",2, 200, 5.0F, 2, 22);
+        
         // Makes the new material
         CopperPickaxe = new CopperPickaxe(550, tutMaterial).setIconIndex(3).setItemName("Copper Pickaxe");
         CopperAxe = new CopperAxe(551, tutMaterial).setIconIndex(3).setItemName("Copper Axe");
@@ -196,6 +204,7 @@ public class Generic
         CopperSword = new CopperSword(554, tutMaterial).setIconIndex(3).setItemName("Copper Sword");
         CopperPaxel = new CopperPaxel(555, tutMaterial).setIconIndex(3).setItemName("Copper Paxel");
         GlassShovel = new GlassShovel(556, Glass).setIconIndex(3).setItemName("Glass Shovel");
+        CopperBattleAxe = new CopperBattleAxe(557, BattleAxe).setIconIndex(3).setItemName("Copper Battleaxe");
         LanguageRegistry.addName(CopperPickaxe, "Copper Pickaxe");
         LanguageRegistry.addName(CopperAxe, "Copper Axe");
         LanguageRegistry.addName(CopperShovel, "Copper Shovel");
@@ -203,6 +212,7 @@ public class Generic
         LanguageRegistry.addName(CopperHoe, "Copper Hoe");
         LanguageRegistry.addName(CopperPaxel, "Copper Paxel");
         LanguageRegistry.addName(GlassShovel, "Glass Shovel");
+        LanguageRegistry.addName(CopperBattleAxe, "Copper Battleaxe");
         // Registry of the new tools
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperBlock, true, new Object[]
                 {
@@ -236,6 +246,11 @@ public class Generic
                 {
                     " F ", " F " , " X " , 'F', "ingotCopper", 'X', Item.stick
                 }));
+        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperBattleAxe, true, new Object[]
+                {
+                    "FFF", "FXF" , " X " , 'F', "ingotCopper", 'X', Item.stick
+                }));
+        
         ItemStack GlassShovel = new ItemStack(Generic.GlassShovel);
         GlassShovel.addEnchantment(Enchantment.silkTouch, 2);
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(GlassShovel, true, new Object[]

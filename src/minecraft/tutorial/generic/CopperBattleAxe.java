@@ -8,9 +8,9 @@ import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class CopperSword extends ItemSword
+public class CopperBattleAxe extends ItemSword
 {
-    public CopperSword(int par1, EnumToolMaterial par2EnumToolMaterial)
+    public CopperBattleAxe(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1, par2EnumToolMaterial);
         this.setMaxDamage(par2EnumToolMaterial.getMaxUses());
@@ -24,14 +24,13 @@ public class CopperSword extends ItemSword
 
     public boolean hitEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving)
     {
-    	par2EntityLiving.setFire(2); 
-    	par1ItemStack.damageItem(1, par3EntityLiving);
+        par1ItemStack.damageItem(1, par3EntityLiving);
         //x is number of seconds set fire for.
         return true;
     }
     @Override
     public String getTextureFile()
     {
-        return CommonProxy.Sword_PNG;
+        return CommonProxy.battleaxe_PNG;
     }
 }
