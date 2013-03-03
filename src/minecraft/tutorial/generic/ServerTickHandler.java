@@ -3,6 +3,7 @@ package tutorial.generic;
 import java.util.EnumSet;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -34,6 +35,8 @@ public class ServerTickHandler implements ITickHandler {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
 
 
 	private void onPlayerTick(EntityPlayer player) {
@@ -41,7 +44,6 @@ public class ServerTickHandler implements ITickHandler {
 			ItemStack hand = player.getCurrentItemOrArmor(0);
 			
 			if(hand.getItem() == Generic.CopperBattleAxe){
-
 				player.addPotionEffect((new PotionEffect(Potion.moveSlowdown.getId(), 10, 2)));
 			}
 		}
