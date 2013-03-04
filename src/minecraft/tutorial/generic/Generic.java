@@ -272,7 +272,7 @@ public class Generic
                 }));
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(WoodenBattleAxe, true, new Object[]
                 {
-                    "FFF", "FXF" , " X " , 'F', Block.planks, 'X', Item.stick
+                    "FFF", "FXF" , " X " , 'F', "plankWood", 'X', Item.stick
                 }));
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(StoneBattleAxe, true, new Object[]
                 {
