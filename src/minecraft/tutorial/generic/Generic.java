@@ -272,7 +272,7 @@ public class Generic
                 }));
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(WoodenBattleAxe, true, new Object[]
                 {
-                    "FFF", "FXF" , " X " , 'F', Block.wood, 'X', Item.stick
+                    "FFF", "FXF" , " X " , 'F', Block.planks, 'X', Item.stick
                 }));
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(StoneBattleAxe, true, new Object[]
                 {
@@ -306,6 +306,7 @@ public class Generic
                 CopperPickaxeStack, CopperShovel, CopperAxe);
         GameRegistry.addShapelessRecipe(new ItemStack(Generic.genericItem, 9),
                 CopperBlock);
+       
         DungeonHooks.addDungeonLoot(CopperPaxel, 100, 1, 1);
     }
 
