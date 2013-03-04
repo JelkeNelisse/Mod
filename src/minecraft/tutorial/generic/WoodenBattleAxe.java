@@ -20,7 +20,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class CopperBattleAxe extends ItemSword
+public class WoodenBattleAxe extends ItemSword
 {
 	
 	
@@ -29,7 +29,7 @@ public class CopperBattleAxe extends ItemSword
 		}
 
 
-    public CopperBattleAxe(int par1, EnumToolMaterial par2EnumToolMaterial)
+    public WoodenBattleAxe(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1, par2EnumToolMaterial);
         this.setMaxDamage(par2EnumToolMaterial.getMaxUses());
@@ -37,7 +37,7 @@ public class CopperBattleAxe extends ItemSword
 
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
-        return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return OreDictionary.getOreID("plankWood") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
   
    
@@ -57,5 +57,5 @@ public class CopperBattleAxe extends ItemSword
     {
         return CommonProxy.battleaxe_PNG;
     }
-
+    
 }

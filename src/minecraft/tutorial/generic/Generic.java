@@ -82,6 +82,11 @@ public class Generic
     public static Item CopperLegs;
     public static Item CopperBoots;
     public static Item CopperBattleAxe;
+    public static Item WoodenBattleAxe;
+    public static Item StoneBattleAxe;
+    public static Item IronBattleAxe;
+    public static Item EmeraldBattleAxe;
+    public static Item GoldenBattleAxe;
     public static int CopperIngotID;
     public static int CopperPickaxeID;
     public static int CopperAxeID;
@@ -132,7 +137,7 @@ public class Generic
     public void load(FMLInitializationEvent event)
     {
     	proxy.registerServerTickHandler();
-
+    	proxy.registerRenderThings();  	
     	
         OreDictionary.registerOre("ingotCopper", new ItemStack(genericItem));
         OreDictionary.registerOre("oreCopper", new ItemStack(genericOre));
@@ -195,8 +200,19 @@ public class Generic
         EnumToolMaterial tutMaterial = EnumHelper.addToolMaterial("TutMaterial", 2, 200, 5.0F,(int) 1.5, 22);
         EnumToolMaterial Glass = EnumHelper.addToolMaterial("Glass", 0, 1, 1.5F, 0, 10);
         EnumToolMaterial BattleAxe = EnumHelper.addToolMaterial ("BattleAxe",2, 200, 5.0F, 2, 22);
-        
+        EnumToolMaterial WOOD = EnumHelper.addToolMaterial ("Wood",0, 59, 2.0F, 1, 15);
+        EnumToolMaterial STONE = EnumHelper.addToolMaterial ("Stone",1, 131, 4.0F, 2, 5);
+        EnumToolMaterial IRON = EnumHelper.addToolMaterial ("Iron",2, 250, 6.0F, 3, 14);
+        EnumToolMaterial EMERALD = EnumHelper.addToolMaterial ("Emerald",3, 1561, 8.0F, 4, 10);
+        EnumToolMaterial GOLD = EnumHelper.addToolMaterial ("Gold",0, 32, 12.0F, 1, 22);
         // Makes the new material
+        
+        WoodenBattleAxe = new WoodenBattleAxe(558, WOOD).setIconIndex(0).setItemName("Wooden Battleaxe");
+        StoneBattleAxe = new StoneBattleAxe(559, STONE).setIconIndex(1).setItemName("Stone Battleaxe");
+        IronBattleAxe = new IronBattleAxe(560, IRON).setIconIndex(2).setItemName("Iron Battleaxe");
+        EmeraldBattleAxe = new EmeraldBattleAxe(561, EMERALD).setIconIndex(3).setItemName("Emerald Battleaxe");
+        GoldenBattleAxe = new GoldenBattleAxe(562, GOLD).setIconIndex(4).setItemName("Golden Battleaxe");
+        CopperBattleAxe = new CopperBattleAxe(557, BattleAxe).setIconIndex(5).setItemName("Copper Battleaxe");
         CopperPickaxe = new CopperPickaxe(550, tutMaterial).setIconIndex(3).setItemName("Copper Pickaxe");
         CopperAxe = new CopperAxe(551, tutMaterial).setIconIndex(3).setItemName("Copper Axe");
         CopperShovel = new CopperShovel(552, tutMaterial).setIconIndex(3).setItemName("Copper Shovel");
@@ -204,7 +220,6 @@ public class Generic
         CopperSword = new CopperSword(554, tutMaterial).setIconIndex(3).setItemName("Copper Sword");
         CopperPaxel = new CopperPaxel(555, tutMaterial).setIconIndex(3).setItemName("Copper Paxel");
         GlassShovel = new GlassShovel(556, Glass).setIconIndex(3).setItemName("Glass Shovel");
-        CopperBattleAxe = new CopperBattleAxe(557, BattleAxe).setIconIndex(3).setItemName("Copper Battleaxe");
         LanguageRegistry.addName(CopperPickaxe, "Copper Pickaxe");
         LanguageRegistry.addName(CopperAxe, "Copper Axe");
         LanguageRegistry.addName(CopperShovel, "Copper Shovel");
@@ -213,6 +228,11 @@ public class Generic
         LanguageRegistry.addName(CopperPaxel, "Copper Paxel");
         LanguageRegistry.addName(GlassShovel, "Glass Shovel");
         LanguageRegistry.addName(CopperBattleAxe, "Copper Battleaxe");
+        LanguageRegistry.addName(WoodenBattleAxe, "Wooden Battleaxe");
+        LanguageRegistry.addName(StoneBattleAxe, "Stone Battleaxe");
+        LanguageRegistry.addName(IronBattleAxe, "Iron Battleaxe");
+        LanguageRegistry.addName(EmeraldBattleAxe, "Diamond Battleaxe");
+        LanguageRegistry.addName(GoldenBattleAxe, "Golden Battleaxe");
         // Registry of the new tools
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperBlock, true, new Object[]
                 {
@@ -249,6 +269,26 @@ public class Generic
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperBattleAxe, true, new Object[]
                 {
                     "FFF", "FXF" , " X " , 'F', "ingotCopper", 'X', Item.stick
+                }));
+        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(WoodenBattleAxe, true, new Object[]
+                {
+                    "FFF", "FXF" , " X " , 'F', Block.wood, 'X', Item.stick
+                }));
+        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(StoneBattleAxe, true, new Object[]
+                {
+                    "FFF", "FXF" , " X " , 'F', Block.cobblestone, 'X', Item.stick
+                }));
+        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(IronBattleAxe, true, new Object[]
+                {
+                    "FFF", "FXF" , " X " , 'F', Item.ingotIron, 'X', Item.stick
+                }));
+        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(EmeraldBattleAxe, true, new Object[]
+                {
+                    "FFF", "FXF" , " X " , 'F', Item.diamond, 'X', Item.stick
+                }));
+        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(GoldenBattleAxe, true, new Object[]
+                {
+                    "FFF", "FXF" , " X " , 'F', Item.ingotGold, 'X', Item.stick
                 }));
         
         ItemStack GlassShovel = new ItemStack(Generic.GlassShovel);

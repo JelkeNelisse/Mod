@@ -4,6 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -20,7 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class CopperBattleAxe extends ItemSword
+public class StoneBattleAxe extends ItemSword
 {
 	
 	
@@ -29,16 +30,16 @@ public class CopperBattleAxe extends ItemSword
 		}
 
 
-    public CopperBattleAxe(int par1, EnumToolMaterial par2EnumToolMaterial)
+    public StoneBattleAxe(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1, par2EnumToolMaterial);
         this.setMaxDamage(par2EnumToolMaterial.getMaxUses());
     }
 
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
-    {
-        return OreDictionary.getOreID("ingotCopper") == OreDictionary.getOreID(par2ItemStack) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
-    }
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) 
+    { 
+             return Block.cobblestone.blockID == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack); 
+    } 
   
    
    // public void onUpdate(ItemStack itemstack, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving){
@@ -57,5 +58,5 @@ public class CopperBattleAxe extends ItemSword
     {
         return CommonProxy.battleaxe_PNG;
     }
-
+    
 }
