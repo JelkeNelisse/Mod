@@ -1,5 +1,7 @@
 package tutorial.generic;
 
+import net.minecraftforge.client.MinecraftForgeClient;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -40,4 +42,11 @@ public class CommonProxy
 	public void registerRenderThings() {
 		
 	}
+
+	public  void registerRenderInformation() 
+    { 
+
+    } 
+   
+   
 }
