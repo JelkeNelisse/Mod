@@ -54,7 +54,7 @@ public class ServerTickHandler implements ITickHandler {
 			
 			
 			if(hand.getItem() == Generic.WoodenBattleAxe){
-				player.addPotionEffect((new PotionEffect(Potion.moveSlowdown.getId(), 10, 2)));
+				player.addPotionEffect((new PotionEffect(Potion.moveSlowdown.getId(), 10, 1)));
 			}
 			
 			if(hand.getItem() == Generic.StoneBattleAxe){
@@ -70,7 +70,8 @@ public class ServerTickHandler implements ITickHandler {
 			}
 			
 			if(hand.getItem() == Generic.GoldenBattleAxe){
-				player.addPotionEffect((new PotionEffect(Potion.moveSlowdown.getId(), 10, 2)));
+				player.addPotionEffect((new PotionEffect(Potion.moveSlowdown.getId(), 10, 1)));
+				player.addPotionEffect((new PotionEffect(Potion.heal.getId(), 10, 1)));
 			}
 			
 			if(hand.getItem() == Generic.CopperBattleAxe){

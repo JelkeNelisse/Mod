@@ -2,15 +2,19 @@ package tutorial.generic;
 
 // This Import list will grow longer with each additional tutorial.
 // It's not pruned between full class postings, unlike other tutorial code.
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Map;
 
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApiHelper;
+import tutorial.generic.client.ClientProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemTool;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,6 +38,10 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityEggInfo;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.block.material.Material;
@@ -50,17 +58,23 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.potion.Potion;
+import net.minecraft.src.ModLoader;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
 
 @Mod(modid = "Generic", name = "Copper Mod", version = "1.0.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
@@ -70,6 +84,7 @@ public class Generic
     public final static Block CreepOre = new CreepOre(980, 2, Material.iron);
     public final static Block genericOre = new GenericOre(900, 1, Material.iron);
     public final static Item genericItem = new GenericItem(990).setItemName("Copper Ingot");
+    public static Item rottenApple = (new ItemFood(995, 4, 0.1F, true)).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F).setIconIndex(0).setItemName("rottenApple").setTextureFile(CommonProxy.rottenapple_PNG);
     public static Item CopperPickaxe;
     public static Item CopperAxe;
     public static Item CopperShovel;
@@ -87,6 +102,7 @@ public class Generic
     public static Item IronBattleAxe;
     public static Item EmeraldBattleAxe;
     public static Item GoldenBattleAxe;
+    public static int startEntityId = 300;
     public static int CopperIngotID;
     public static int CopperPickaxeID;
     public static int CopperAxeID;
@@ -132,17 +148,28 @@ public class Generic
         CopperOreID = config.getBlock("Copper Ore", 900).getInt();
         config.save();
     }
+    
 
     @Init
     public void load(FMLInitializationEvent event)
     {
-    	proxy.registerServerTickHandler();
-    	proxy.registerRenderThings();  	
+    	
+    	
+    	ClientProxy.registerRenderInformation();
+    	proxy.registerServerTickHandler(); 	
+    	
+    	EntityRegistry.registerModEntity(EntityTutorial.class, "Goblin", 1, this, 80, 3, true);
+    	 EntityRegistry.addSpawn(EntityTutorial.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
+    	LanguageRegistry.instance().addStringLocalization("entity.Generic.Goblin.name","Goblin");
+    	
+    	registerEntityEgg(EntityTutorial.class, 0x081654, 0x9C2424);
+    	
     	
         OreDictionary.registerOre("ingotCopper", new ItemStack(genericItem));
         OreDictionary.registerOre("oreCopper", new ItemStack(genericOre));
         // OreDictionary stuff
        
+        LanguageRegistry.addName(rottenApple, "Rotten Apple");
         LanguageRegistry.addName(genericOre, "Copper Ore");
         LanguageRegistry.addName(CreepOre, "Creep Ore");
         LanguageRegistry.addName(CopperBlock, "Copper Block");
@@ -308,6 +335,23 @@ public class Generic
                 CopperBlock);
        
         DungeonHooks.addDungeonLoot(CopperPaxel, 100, 1, 1);
+    }
+
+
+    public static int getUniqueEntityId(){
+    	do{
+    		startEntityId++;
+    	}
+    	while(EntityList.getStringFromID(startEntityId) != null);
+    	
+    	return startEntityId;
+    }
+    
+    public static void registerEntityEgg(Class <? extends Entity> entity, int primaryColor, int secondaryColor)
+    {
+    	int id =  getUniqueEntityId();
+    	EntityList.IDtoClassMapping.put(id, entity);
+    	EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
     }
 
     @PostInit

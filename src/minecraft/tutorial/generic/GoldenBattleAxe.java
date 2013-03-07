@@ -49,7 +49,7 @@ public class GoldenBattleAxe extends ItemSword
 
     public boolean hitEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving)
     {
-    	knockbackEntity(par2EntityLiving, 2.2f);
+    	knockbackEntity(par2EntityLiving, 1.7f);
         par1ItemStack.damageItem(1, par3EntityLiving);
 
         return true;
