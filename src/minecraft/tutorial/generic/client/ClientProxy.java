@@ -39,14 +39,10 @@ public class ClientProxy extends CommonProxy
         MinecraftForgeClient.preloadTexture(battleaxe_PNG);
         MinecraftForgeClient.preloadTexture(rottenapple_PNG);
              }
-<<<<<<< HEAD
-   
     
-    public static void registerRenderInformation() 
-=======
+
     @Override
     public  void registerRenderInformation() 
->>>>>>> Goblin Finally Fixed
     { 
     MinecraftForgeClient.preloadTexture("/tutorial/generic/png/goblin.png"); 
     RenderingRegistry.instance().registerEntityRenderingHandler(EntityTutorial.class, new RenderTutorial(new ModelTutorial(), 0.3F)); //Register the rendering for your entities. 

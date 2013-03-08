@@ -36,7 +36,11 @@ public class EntityTutorial extends EntityMob{
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
 	}
 
-	
+    protected void func_82164_bB()
+    {
+        super.func_82164_bB();
+        this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
+    }
 	
 	public int getTotalArmorValue(){
 		return 4;

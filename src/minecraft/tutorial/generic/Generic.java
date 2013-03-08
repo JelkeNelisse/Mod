@@ -5,18 +5,12 @@ package tutorial.generic;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
-<<<<<<< HEAD
 
-=======
->>>>>>> Goblin Finally Fixed
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApiHelper;
 import tutorial.generic.client.ClientProxy;
-<<<<<<< HEAD
 
-=======
->>>>>>> Goblin Finally Fixed
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemTool;
@@ -76,10 +70,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.potion.Potion;
-<<<<<<< HEAD
 import net.minecraft.src.ModLoader;
-=======
->>>>>>> Goblin Finally Fixed
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -162,21 +153,12 @@ public class Generic
     @Init
     public void load(FMLInitializationEvent event)
     {
-<<<<<<< HEAD
-    	
-    	
-    	ClientProxy.registerRenderInformation();
+    	 instance.proxy.registerRenderInformation();
     	proxy.registerServerTickHandler(); 	
     	
     	EntityRegistry.registerModEntity(EntityTutorial.class, "Goblin", 1, this, 80, 3, true);
-    	 EntityRegistry.addSpawn(EntityTutorial.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
-=======
-    	instance.proxy.registerRenderInformation();
-    	proxy.registerServerTickHandler(); 	
-    	
-    	EntityRegistry.registerModEntity(EntityTutorial.class, "Goblin", 1, this, 80, 3, true);
-    	 EntityRegistry.addSpawn(EntityTutorial.class, 15, 3, 5, EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
->>>>>>> Goblin Finally Fixed
+    	 EntityRegistry.addSpawn(EntityTutorial.class, 10, 3, 5, EnumCreatureType.monster,  BiomeGenBase.taigaHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.plains, BiomeGenBase.taiga, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland, BiomeGenBase.river, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
+
     	LanguageRegistry.instance().addStringLocalization("entity.Generic.Goblin.name","Goblin");
     	
     	registerEntityEgg(EntityTutorial.class, 0x081654, 0x9C2424);
@@ -352,6 +334,7 @@ public class Generic
                 CopperBlock);
        
         DungeonHooks.addDungeonLoot(CopperPaxel, 100, 1, 1);
+        DungeonHooks.addDungeonMob("Goblin", 100);
     }
 
 
