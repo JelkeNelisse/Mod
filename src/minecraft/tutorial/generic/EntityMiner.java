@@ -43,21 +43,21 @@ public class EntityMiner extends EntityMob{
      
 	@Override 
 	protected String getLivingSound() { 
-	return "mob.goblin.say"; 
+	return "mob.miner.say"; 
 	}
 
     
     
     protected String getHurtSound(){
-    	return "mob.goblin.hurt";
+    	return "mob.miner.hurt";
     }
     
     protected String getDeathSound(){
-    	return "mob.goblin.death";
+    	return "mob.miner.death";
     }
     
     protected void playStepSound(int par1, int par2, int par3, int par4){
-    	this.worldObj.playSoundAtEntity(this, "mob.goblin.step", 0.15F, 1.0F);
+    	this.worldObj.playSoundAtEntity(this, "mob.miner.step", 0.15F, 1.0F);
     }
 
     

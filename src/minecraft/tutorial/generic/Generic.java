@@ -5,7 +5,7 @@ package tutorial.generic;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
-
+import net.minecraftforge.common.DungeonHooks;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -19,6 +19,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.EnumHelper;
@@ -71,6 +72,7 @@ import net.minecraft.item.ItemSpade;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.ModLoader;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -80,6 +82,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Generic
 {
+    public static String DUNGEON_CHEST = "dungeonChest";
     public final static Block CopperBlock = new CopperBlock(981, 1, Material.iron);
     public final static Block CreepOre = new CreepOre(980, 2, Material.iron);
     public final static Block genericOre = new GenericOre(900, 1, Material.iron);
@@ -150,7 +153,6 @@ public class Generic
         CopperOreID = config.getBlock("Copper Ore", 900).getInt();
         config.save();
     }
-    
 
     @Init
     public void load(FMLInitializationEvent event)
@@ -160,16 +162,15 @@ public class Generic
     	
     	EntityRegistry.registerModEntity(EntityTutorial.class, "Goblin", 1, this, 80, 3, true);
     	 EntityRegistry.addSpawn(EntityTutorial.class, 10, 3, 5, EnumCreatureType.monster,  BiomeGenBase.taigaHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.plains, BiomeGenBase.taiga, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland, BiomeGenBase.river, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
-
-    	 
+   	 
     	 EntityRegistry.registerModEntity(EntityMiner.class, "Miner", 2, this, 80, 3, true);
     	 EntityRegistry.addSpawn(EntityMiner.class, 10, 3, 5, EnumCreatureType.monster,BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
 
     	LanguageRegistry.instance().addStringLocalization("entity.Generic.Goblin.name","Goblin");
-    	LanguageRegistry.instance().addStringLocalization("entity.Generic.Miner.name","Undead Miner");
+       	LanguageRegistry.instance().addStringLocalization("entity.Generic.Miner.name","Undead Miner");
     	
     	registerEntityEgg(EntityTutorial.class, 0x081654, 0x9C2424);
-    	registerEntityEgg(EntityMiner.class, 0x081654, 0x9C2424);
+      	registerEntityEgg(EntityMiner.class, 0x081654, 0x9C2424);
     	
     	
         OreDictionary.registerOre("ingotCopper", new ItemStack(genericItem));
@@ -336,7 +337,6 @@ public class Generic
                     " F ", " X " , " X " , 'F',  Block.glass , 'X', Item.stick
                 }));
         //Crafting recipes
-        ItemStack CopperPaxel = new ItemStack(Generic.CopperPaxel);
         ItemStack CopperPickaxeStack = new ItemStack(Generic.CopperPickaxe);
         ItemStack CopperAxe = new ItemStack(Generic.CopperAxe);
         ItemStack CopperShovel = new ItemStack(Generic.CopperShovel);
@@ -344,11 +344,18 @@ public class Generic
                 CopperPickaxeStack, CopperShovel, CopperAxe);
         GameRegistry.addShapelessRecipe(new ItemStack(Generic.genericItem, 9),
                 CopperBlock);
-       
-        DungeonHooks.addDungeonLoot(CopperPaxel, 100, 1, 1);
+        ChestGenHooks d = new ChestGenHooks(DUNGEON_CHEST);
+        addDungeonLoot(d,new ItemStack(Generic.HatPiece), 100, 1, 2);
+        addDungeonLoot(d,new ItemStack(Generic.CopperPaxel), 100, 1, 1);
         DungeonHooks.addDungeonMob("Goblin", 100);
     }
 
+    
+    static void addDungeonLoot(ChestGenHooks dungeon, ItemStack item, int weight, int min, int max)
+    {
+        dungeon.addItem(new WeightedRandomChestContent(item, min, max, weight)); 
+        }
+    
 
     public static int getUniqueEntityId(){
     	do{

@@ -26,6 +26,10 @@ public class ClientProxy extends CommonProxy
      	mc.installResource("sound3/mob/goblin/say.ogg", new File (mc.mcDataDir, "resources/tutorial/goblin/say.ogg"));
      	mc.installResource("sound3/mob/goblin/death.ogg", new File (mc.mcDataDir, "resources/tutorial/goblin/death.ogg"));
      	mc.installResource("sound3/mob/goblin/step.ogg", new File (mc.mcDataDir, "resources/tutorial/goblin/step.ogg"));
+     	mc.installResource("sound3/mob/miner/hurt.ogg", new File (mc.mcDataDir, "resources/tutorial/miner/hurt.ogg"));
+     	mc.installResource("sound3/mob/miner/say.ogg", new File (mc.mcDataDir, "resources/tutorial/miner/say.ogg"));
+     	mc.installResource("sound3/mob/miner/death.ogg", new File (mc.mcDataDir, "resources/tutorial/miner/death.ogg"));
+     	mc.installResource("sound3/mob/miner/step.ogg", new File (mc.mcDataDir, "resources/tutorial/miner/step.ogg"));
         MinecraftForgeClient.preloadTexture(ITEMS_PNG);
         MinecraftForgeClient.preloadTexture(BLOCK_PNG);
         MinecraftForgeClient.preloadTexture(GenericItem_PNG);
