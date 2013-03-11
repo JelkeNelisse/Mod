@@ -87,7 +87,7 @@ public class Generic
     public final static Block CreepOre = new CreepOre(980, 2, Material.iron);
     public final static Block genericOre = new GenericOre(900, 1, Material.iron);
     public final static Item genericItem = new GenericItem(990).setItemName("Copper Ingot");
-    public final static Item HatPiece = new HatPiece(999).setItemName("Hat Piece");
+    public final static Item HatPiece = new HatPiece(999).setItemName("HatPiece");
     public static Item rottenApple = (new ItemFood(995, 4, 0.1F, true)).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F).setIconIndex(0).setItemName("rottenApple").setTextureFile(CommonProxy.rottenapple_PNG);
     public static Item CopperPickaxe;
     public static Item CopperAxe;
@@ -344,17 +344,13 @@ public class Generic
                 CopperPickaxeStack, CopperShovel, CopperAxe);
         GameRegistry.addShapelessRecipe(new ItemStack(Generic.genericItem, 9),
                 CopperBlock);
-        ChestGenHooks d = new ChestGenHooks(DUNGEON_CHEST);
-        addDungeonLoot(d,new ItemStack(Generic.HatPiece), 100, 1, 2);
-        addDungeonLoot(d,new ItemStack(Generic.CopperPaxel), 100, 1, 1);
-        DungeonHooks.addDungeonMob("Goblin", 100);
+       
+        ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR).addItem(new WeightedRandomChestContent(new ItemStack(HatPiece),1,2,100));
+        ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(CopperPaxel),1,1,100));
+        DungeonHooks.addDungeonMob("Goblin", 200);
     }
+        
 
-    
-    static void addDungeonLoot(ChestGenHooks dungeon, ItemStack item, int weight, int min, int max)
-    {
-        dungeon.addItem(new WeightedRandomChestContent(item, min, max, weight)); 
-        }
     
 
     public static int getUniqueEntityId(){
