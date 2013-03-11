@@ -84,6 +84,7 @@ public class Generic
     public final static Block CreepOre = new CreepOre(980, 2, Material.iron);
     public final static Block genericOre = new GenericOre(900, 1, Material.iron);
     public final static Item genericItem = new GenericItem(990).setItemName("Copper Ingot");
+    public final static Item HatPiece = new HatPiece(999).setItemName("Hat Piece");
     public static Item rottenApple = (new ItemFood(995, 4, 0.1F, true)).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F).setIconIndex(0).setItemName("rottenApple").setTextureFile(CommonProxy.rottenapple_PNG);
     public static Item CopperPickaxe;
     public static Item CopperAxe;
@@ -102,6 +103,7 @@ public class Generic
     public static Item IronBattleAxe;
     public static Item EmeraldBattleAxe;
     public static Item GoldenBattleAxe;
+    public static Item MinersHat;
     public static int startEntityId = 300;
     public static int CopperIngotID;
     public static int CopperPickaxeID;
@@ -159,9 +161,15 @@ public class Generic
     	EntityRegistry.registerModEntity(EntityTutorial.class, "Goblin", 1, this, 80, 3, true);
     	 EntityRegistry.addSpawn(EntityTutorial.class, 10, 3, 5, EnumCreatureType.monster,  BiomeGenBase.taigaHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.plains, BiomeGenBase.taiga, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland, BiomeGenBase.river, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
 
+    	 
+    	 EntityRegistry.registerModEntity(EntityMiner.class, "Miner", 2, this, 80, 3, true);
+    	 EntityRegistry.addSpawn(EntityMiner.class, 10, 3, 5, EnumCreatureType.monster,BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
+
     	LanguageRegistry.instance().addStringLocalization("entity.Generic.Goblin.name","Goblin");
+    	LanguageRegistry.instance().addStringLocalization("entity.Generic.Miner.name","Undead Miner");
     	
     	registerEntityEgg(EntityTutorial.class, 0x081654, 0x9C2424);
+    	registerEntityEgg(EntityMiner.class, 0x081654, 0x9C2424);
     	
     	
         OreDictionary.registerOre("ingotCopper", new ItemStack(genericItem));
@@ -194,6 +202,7 @@ public class Generic
             LanguageRegistry.addName(CopperPlate, "Copper Plate");
             LanguageRegistry.addName(CopperLegs, "Copper Legs");
             LanguageRegistry.addName(CopperBoots, "Copper Boots");
+            LanguageRegistry.addName(HatPiece, "Hat Piece");
             CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperHelmet, true, new Object[]
                     {
                         "FFF", "F F" , "   " , 'F', "ingotCopper"
@@ -223,6 +232,7 @@ public class Generic
         */
         // worldgen
        
+        EnumArmorMaterial TutArmorMaterial = EnumHelper.addArmorMaterial("TutMaterial", 24, new int[] {1, 4, 4, 1}, 10);
         EnumToolMaterial tutMaterial = EnumHelper.addToolMaterial("TutMaterial", 2, 200, 5.0F,(int) 1.5, 22);
         EnumToolMaterial Glass = EnumHelper.addToolMaterial("Glass", 0, 1, 1.5F, 0, 10);
         EnumToolMaterial BattleAxe = EnumHelper.addToolMaterial ("BattleAxe",2, 200, 5.0F, 2, 22);
@@ -232,7 +242,7 @@ public class Generic
         EnumToolMaterial EMERALD = EnumHelper.addToolMaterial ("Emerald",3, 1561, 8.0F, 4, 10);
         EnumToolMaterial GOLD = EnumHelper.addToolMaterial ("Gold",0, 32, 12.0F, 1, 22);
         // Makes the new material
-        
+        MinersHat = new MinersHat(4099, TutArmorMaterial, proxy.addArmor("Tutorial"), 0).setItemName("Miners Hat").setIconIndex(4);
         WoodenBattleAxe = new WoodenBattleAxe(558, WOOD).setIconIndex(0).setItemName("Wooden Battleaxe");
         StoneBattleAxe = new StoneBattleAxe(559, STONE).setIconIndex(1).setItemName("Stone Battleaxe");
         IronBattleAxe = new IronBattleAxe(560, IRON).setIconIndex(2).setItemName("Iron Battleaxe");
@@ -246,6 +256,7 @@ public class Generic
         CopperSword = new CopperSword(554, tutMaterial).setIconIndex(3).setItemName("Copper Sword");
         CopperPaxel = new CopperPaxel(555, tutMaterial).setIconIndex(3).setItemName("Copper Paxel");
         GlassShovel = new GlassShovel(556, Glass).setIconIndex(3).setItemName("Glass Shovel");
+        LanguageRegistry.addName(MinersHat, "Miners Hat");        
         LanguageRegistry.addName(CopperPickaxe, "Copper Pickaxe");
         LanguageRegistry.addName(CopperAxe, "Copper Axe");
         LanguageRegistry.addName(CopperShovel, "Copper Shovel");
@@ -260,17 +271,18 @@ public class Generic
         LanguageRegistry.addName(EmeraldBattleAxe, "Diamond Battleaxe");
         LanguageRegistry.addName(GoldenBattleAxe, "Golden Battleaxe");
         // Registry of the new tools
+     
+        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(MinersHat, true, new Object[]
+                {
+                    "FFF", "F F" , 'F', Generic.HatPiece
+                }));  
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperBlock, true, new Object[]
                 {
                     "FFF", "FFF" , "FFF" , 'F', "ingotCopper"
                 }));
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperShovel, true, new Object[]
                 {
-                    " F ", " X " , " X " , 'F', "ingotCopper", 'X', Item.stick
-                }));
-        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperAxe, true, new Object[]
-                {
-                    "FF ", "FX " , " X " , 'F', "ingotCopper", 'X', Item.stick
+                    "F", "X" , "X" , 'F', "ingotCopper", 'X', Item.stick
                 }));
         CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperAxe, true, new Object[]
                 {

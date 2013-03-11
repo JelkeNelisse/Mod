@@ -15,6 +15,7 @@ public class ModelTutorial extends ModelBase
     ModelRenderer Head;
     ModelRenderer ArmLeft;
     ModelRenderer ArmRight;
+    ModelRenderer Nose;
   
   public ModelTutorial()
   {
@@ -57,6 +58,12 @@ public class ModelTutorial extends ModelBase
       ArmRight.setTextureSize(32, 32);
       ArmRight.mirror = true;
       setRotation(ArmRight, 0F, 0F, 0F);
+      Nose = new ModelRenderer(this, 0, 18);
+      Nose.addBox(0F, 0F, 0F, 2, 1, 1);
+      Nose.setRotationPoint(-1F, 8F, -3F);
+      Nose.setTextureSize(32, 32);
+      Nose.mirror = true;
+      setRotation(Nose, 0F, 0F, 0F);
   }
   
   
@@ -70,6 +77,7 @@ public class ModelTutorial extends ModelBase
     Head.render(par7);
     ArmLeft.render(par7);
     ArmRight.render(par7);
+    Nose.render(par7);
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)

@@ -22,6 +22,7 @@ public class CommonProxy
     public static String copperblock_PNG = "/tutorial/generic/png/copperblock.png";
     public static String battleaxe_PNG = "/tutorial/generic/png/battleaxe.png";
     public static String rottenapple_PNG = "/tutorial/generic/png/rottenapple.png";
+    public static String hatpiece_PNG = "/tutorial/generic/png/hatpiece.png";
     // Client stuff
 
     public int addArmor(String armor)

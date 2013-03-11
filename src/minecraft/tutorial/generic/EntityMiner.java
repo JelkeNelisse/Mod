@@ -1,6 +1,5 @@
 package tutorial.generic;
 
-import ibxm.Player;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -16,20 +15,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraft.entity.EntityLiving;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
-public class EntityTutorial extends EntityMob{
+public class EntityMiner extends EntityMob{
 
 
-	public EntityTutorial(World par1World) {
+	public EntityMiner(World par1World) {
 		super(par1World);
-		this.texture = "/tutorial/generic/png/goblin.png";
-		this.moveSpeed = 0.35f;
+		this.texture = "/tutorial/generic/png/miner.png";
+		this.moveSpeed = 0.25f;
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
 		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -37,10 +35,9 @@ public class EntityTutorial extends EntityMob{
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
 	}
-
-
+	
 	public int getTotalArmorValue(){
-		return 4;
+		return 8;
 	}
 	
      
@@ -63,6 +60,7 @@ public class EntityTutorial extends EntityMob{
     	this.worldObj.playSoundAtEntity(this, "mob.goblin.step", 0.15F, 1.0F);
     }
 
+    
 	protected boolean isAIEnabled(){
 		return true;
 	}
@@ -70,7 +68,7 @@ public class EntityTutorial extends EntityMob{
 	@Override
 	public int getMaxHealth() {
 		
-		return 10;
+		return 20;
 	}
 	
 	public int getAttackStrenght (Entity par1Entity){
@@ -78,7 +76,7 @@ public class EntityTutorial extends EntityMob{
 	}
 	
 	protected int getDropItemId(){
-		return Generic.rottenApple.itemID;
+		return Generic.HatPiece.itemID;
 	}
 	
 	 protected void dropRareDrop(int par1)
@@ -90,11 +88,12 @@ public class EntityTutorial extends EntityMob{
 	                break;
 
 	            case 1:
-	                this.dropItem(Generic.genericItem.itemID, 1);
+	                this.dropItem(Item.bone.itemID, 1);
 	                break;
 
 	            case 2:
-	                this.dropItem(Item.ingotGold.itemID, 1);
+	                this.dropItem(Item.rottenFlesh.itemID, 1);
+	            
 	        }
 	    }
 	

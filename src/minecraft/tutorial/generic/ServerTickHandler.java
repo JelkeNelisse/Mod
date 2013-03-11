@@ -23,11 +23,7 @@ import cpw.mods.fml.common.TickType;
 
 public class ServerTickHandler implements ITickHandler {
 	
-	
-	Item Axes[] = new Item[]{Generic.WoodenBattleAxe, Generic.StoneBattleAxe, Generic.IronBattleAxe, 
-	Generic.EmeraldBattleAxe, Generic.GoldenBattleAxe, Generic.CopperBattleAxe};
-	
-	
+
 	
 	@Override
 	 public void tickStart(EnumSet<TickType> type, Object... tickData)
