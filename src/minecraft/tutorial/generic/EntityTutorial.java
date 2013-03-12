@@ -25,7 +25,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class EntityTutorial extends EntityMob{
 
-
+	 
 	public EntityTutorial(World par1World) {
 		super(par1World);
 		this.texture = "/tutorial/generic/png/goblin.png";
@@ -36,7 +36,7 @@ public class EntityTutorial extends EntityMob{
 		this.tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
-	}
+			}
 
 
 	public int getTotalArmorValue(){
@@ -76,6 +76,7 @@ public class EntityTutorial extends EntityMob{
 	public int getAttackStrenght (Entity par1Entity){
 		return 4;
 	}
+	
 	
 	protected int getDropItemId(){
 		return Generic.rottenApple.itemID;

@@ -23,7 +23,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class EntityMiner extends EntityMob{
 
-
 	public EntityMiner(World par1World) {
 		super(par1World);
 		this.texture = "/tutorial/generic/png/miner.png";
@@ -34,11 +33,27 @@ public class EntityMiner extends EntityMob{
 		this.tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
+		
 	}
+	
+	public ItemStack getHeldItem() 
+	{ 
+	return defaultHeldItem; 
+	} 
+	 
+	private static final ItemStack defaultHeldItem; 
+	 
+	static 
+	{ 
+	defaultHeldItem =new ItemStack(Item.pickaxeStone,1); 
+	} 
+
 	
 	public int getTotalArmorValue(){
 		return 8;
 	}
+	
+
 	
      
 	@Override 

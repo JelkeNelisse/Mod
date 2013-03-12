@@ -82,7 +82,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Generic
 {
-    public static String DUNGEON_CHEST = "dungeonChest";
+	
     public final static Block CopperBlock = new CopperBlock(981, 1, Material.iron);
     public final static Block CreepOre = new CreepOre(980, 2, Material.iron);
     public final static Block genericOre = new GenericOre(900, 1, Material.iron);
@@ -166,11 +166,16 @@ public class Generic
     	 EntityRegistry.registerModEntity(EntityMiner.class, "Miner", 2, this, 80, 3, true);
     	 EntityRegistry.addSpawn(EntityMiner.class, 10, 3, 5, EnumCreatureType.monster,BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
 
-    	LanguageRegistry.instance().addStringLocalization("entity.Generic.Goblin.name","Goblin");
+     	EntityRegistry.registerModEntity(EntityBoomer.class, "Boomer", 3, this, 80, 3, true);
+      	 EntityRegistry.addSpawn(EntityBoomer.class, 10, 3, 5, EnumCreatureType.monster,  BiomeGenBase.taigaHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.plains, BiomeGenBase.taiga, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland, BiomeGenBase.river, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
+     	 
+      	LanguageRegistry.instance().addStringLocalization("entity.Generic.Goblin.name","Goblin");
        	LanguageRegistry.instance().addStringLocalization("entity.Generic.Miner.name","Undead Miner");
+       	LanguageRegistry.instance().addStringLocalization("entity.Generic.Boomer.name","Boomer");
     	
     	registerEntityEgg(EntityTutorial.class, 0x081654, 0x9C2424);
       	registerEntityEgg(EntityMiner.class, 0x081654, 0x9C2424);
+      	registerEntityEgg(EntityBoomer.class, 0x081654, 0x9C2424);
     	
     	
         OreDictionary.registerOre("ingotCopper", new ItemStack(genericItem));
@@ -203,7 +208,6 @@ public class Generic
             LanguageRegistry.addName(CopperPlate, "Copper Plate");
             LanguageRegistry.addName(CopperLegs, "Copper Legs");
             LanguageRegistry.addName(CopperBoots, "Copper Boots");
-            LanguageRegistry.addName(HatPiece, "Hat Piece");
             CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(CopperHelmet, true, new Object[]
                     {
                         "FFF", "F F" , "   " , 'F', "ingotCopper"
@@ -257,6 +261,7 @@ public class Generic
         CopperSword = new CopperSword(554, tutMaterial).setIconIndex(3).setItemName("Copper Sword");
         CopperPaxel = new CopperPaxel(555, tutMaterial).setIconIndex(3).setItemName("Copper Paxel");
         GlassShovel = new GlassShovel(556, Glass).setIconIndex(3).setItemName("Glass Shovel");
+        LanguageRegistry.addName(HatPiece, "Hat Piece");
         LanguageRegistry.addName(MinersHat, "Miners Hat");        
         LanguageRegistry.addName(CopperPickaxe, "Copper Pickaxe");
         LanguageRegistry.addName(CopperAxe, "Copper Axe");

@@ -7,10 +7,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.client.MinecraftForgeClient;
 import tutorial.generic.CommonProxy;
+import tutorial.generic.EntityBoomer;
 import tutorial.generic.EntityMiner;
 import tutorial.generic.EntityTutorial;
+import tutorial.generic.ModelBoomer;
 import tutorial.generic.ModelMiner;
 import tutorial.generic.ModelTutorial;
+import tutorial.generic.RenderBoomer;
 import tutorial.generic.RenderMiner;
 import tutorial.generic.RenderTutorial;
 
@@ -55,6 +58,7 @@ public class ClientProxy extends CommonProxy
     MinecraftForgeClient.preloadTexture("/tutorial/generic/png/goblin.png"); 
     RenderingRegistry.instance().registerEntityRenderingHandler(EntityTutorial.class, new RenderTutorial(new ModelTutorial(), 0.3F)); //Register the rendering for your entities. 
     RenderingRegistry.instance().registerEntityRenderingHandler(EntityMiner.class, new RenderMiner(new ModelMiner(), 0.3F)); //Register the rendering for your entities. 
+    RenderingRegistry.instance().registerEntityRenderingHandler(EntityBoomer.class, new RenderBoomer(new ModelBoomer(), 0.3F)); //Register the rendering for your entities. 
     } 
    
 
